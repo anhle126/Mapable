@@ -1,0 +1,165 @@
+{
+    "geocoded_waypoints": [
+        {
+            "geocoder_status": "OK",
+            "place_id": "ChIJe7BNbmME9YgRZgXDetcp1o8",
+            "types": [
+                "establishment",
+                "point_of_interest"
+            ]
+        },
+        {
+            "geocoder_status": "OK",
+            "place_id": "ChIJ8RfVaGIE9YgR6Y6jUs0Tt6Y",
+            "types": [
+                "establishment",
+                "point_of_interest"
+            ]
+        }
+    ],
+    "routes": [
+        {
+            "bounds": {
+                "northeast": {
+                    "lat": 33.7739113,
+                    "lng": -84.3917367
+                },
+                "southwest": {
+                    "lat": 33.7716876,
+                    "lng": -84.3951868
+                }
+            },
+            "copyrights": "Map data ©2021 Google",
+            "legs": [
+                {
+                    "distance": {
+                        "text": "0.4 mi",
+                        "value": 565
+                    },
+                    "duration": {
+                        "text": "7 mins",
+                        "value": 447
+                    },
+                    "end_address": "685 Cherry St NW, Atlanta, GA 30313, USA",
+                    "end_location": {
+                        "lat": 33.7739113,
+                        "lng": -84.3951868
+                    },
+                    "start_address": "625 Techwood Dr NW, Atlanta, GA 30332, USA",
+                    "start_location": {
+                        "lat": 33.7716876,
+                        "lng": -84.3917367
+                    },
+                    "steps": [
+                        {
+                            "distance": {
+                                "text": "82 ft",
+                                "value": 25
+                            },
+                            "duration": {
+                                "text": "1 min",
+                                "value": 33
+                            },
+                            "end_location": {
+                                "lat": 33.771908,
+                                "lng": -84.39174109999999
+                            },
+                            "html_instructions": "Head \u003cb\u003enorth\u003c/b\u003e",
+                            "polyline": {
+                                "points": "a`cmEjwabOk@?"
+                            },
+                            "start_location": {
+                                "lat": 33.7716876,
+                                "lng": -84.3917367
+                            },
+                            "travel_mode": "WALKING"
+                        },
+                        {
+                            "distance": {
+                                "text": "79 ft",
+                                "value": 24
+                            },
+                            "duration": {
+                                "text": "1 min",
+                                "value": 16
+                            },
+                            "end_location": {
+                                "lat": 33.7719132,
+                                "lng": -84.3920045
+                            },
+                            "html_instructions": "Turn \u003cb\u003eleft\u003c/b\u003e toward \u003cb\u003eTechwood Dr NW\u003c/b\u003e",
+                            "maneuver": "turn-left",
+                            "polyline": {
+                                "points": "macmEjwabO?r@"
+                            },
+                            "start_location": {
+                                "lat": 33.771908,
+                                "lng": -84.39174109999999
+                            },
+                            "travel_mode": "WALKING"
+                        },
+                        {
+                            "distance": {
+                                "text": "0.1 mi",
+                                "value": 220
+                            },
+                            "duration": {
+                                "text": "2 mins",
+                                "value": 142
+                            },
+                            "end_location": {
+                                "lat": 33.7738887,
+                                "lng": -84.3919811
+                            },
+                            "html_instructions": "Turn \u003cb\u003eright\u003c/b\u003e onto \u003cb\u003eTechwood Dr NW\u003c/b\u003e",
+                            "maneuver": "turn-right",
+                            "polyline": {
+                                "points": "macmE~xabOgA?c@?a@A}@?M?s@?}BA"
+                            },
+                            "start_location": {
+                                "lat": 33.7719132,
+                                "lng": -84.3920045
+                            },
+                            "travel_mode": "WALKING"
+                        },
+                        {
+                            "distance": {
+                                "text": "0.2 mi",
+                                "value": 296
+                            },
+                            "duration": {
+                                "text": "4 mins",
+                                "value": 256
+                            },
+                            "end_location": {
+                                "lat": 33.7739113,
+                                "lng": -84.3951868
+                            },
+                            "html_instructions": "Turn \u003cb\u003eleft\u003c/b\u003e onto \u003cb\u003eBobby Dodd Way NW\u003c/b\u003e\u003cdiv style=\"font-size:0.9em\"\u003eDestination will be on the left\u003c/div\u003e",
+                            "maneuver": "turn-left",
+                            "polyline": {
+                                "points": "ymcmEzxabO?^AtA?x@?h@AvA?`@?R?B?tAAR@h@?j@?\\?\\?X"
+                            },
+                            "start_location": {
+                                "lat": 33.7738887,
+                                "lng": -84.3919811
+                            },
+                            "travel_mode": "WALKING"
+                        }
+                    ],
+                    "traffic_speed_entry": [],
+                    "via_waypoint": []
+                }
+            ],
+            "overview_polyline": {
+                "points": "a`cmEjwabOk@??r@kB?aDA}BA?^AnCAvD?xG"
+            },
+            "summary": "Techwood Dr NW and Bobby Dodd Way NW",
+            "warnings": [
+                "Walking directions are in beta. Use caution – This route may be missing sidewalks or pedestrian paths."
+            ],
+            "waypoint_order": []
+        }
+    ],
+    "status": "OK"
+}
