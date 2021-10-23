@@ -4,42 +4,45 @@
 <body>
 
 
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDVRBMCSs789cm0Pp3kGEY_vFHAvZibiO4"></script>
-<input id="denivele_circuit" />
-<div id="map_canvas"></div>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDVRBMCSs789cm0Pp3kGEY_vFHAvZibiO4"></script>
+    <input id="denivele_circuit" />
 
-<script>
-    var gmarkers = [];
+    <div id="map_canvas"></div>
 
-    function initialize() {
-    var map = new google.maps.Map(
-        document.getElementById("map_canvas"), {
-        center: new google.maps.LatLng(33.77740691779224, -84.39576696552349),
-        zoom: 13,
-        mapTypeId: google.maps.MapTypeId.ROADMAP
-        });
-    var marker = new google.maps.Marker({
-        position: map.getCenter(),
-        map: map
-    });
-    gmarkers.push(marker);
-    var elevationService = new google.maps.ElevationService();
+    <script>
+        let gmarkers = [];
 
-    var requestElevation = {
-        'locations': [gmarkers[0].getPosition()]
-    };
+        function initialize() {
+            let map = new google.maps.Map(
+                document.getElementById("map_canvas"), {
+                center: new google.maps.LatLng(33.77740691779224, -84.39576696552349),
+                zoom: 13,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            });
 
-    elevationService.getElevationForLocations(requestElevation, function(results, status) {
-        if (status == google.maps.ElevationStatus.OK) {
-        if (results[0]) {
-            document.getElementById('denivele_circuit').value = parseFloat(results[0].elevation.toFixed(1)) + " mètres";
+            let marker = new google.maps.Marker({
+                position: map.getCenter(),
+                map: map
+            });
+
+            gmarkers.push(marker);
+            let elevationService = new google.maps.ElevationService();
+
+            let requestElevation = {
+                'locations': [gmarkers[0].getPosition()]
+            };
+
+            elevationService.getElevationForLocations(requestElevation, function (results, status) {
+                if (status == google.maps.ElevationStatus.OK) {
+                    if (results[0]) {
+                        document.getElementById('denivele_circuit').value = parseFloat(results[0].elevation.toFixed(1)) + " metres";
+                    }
+                }
+            });
+
         }
-        }
-    });
-
-    }
-    google.maps.event.addDomListener(window, "load", initialize);
-</script>
+        google.maps.event.addDomListener(window, "load", initialize());
+    </script>
 
 </body>
 
