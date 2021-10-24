@@ -6,7 +6,7 @@
     <h1>My First Google Map</h1>
 
     <div id="googleMap" style="width:100%;height:400px;"></div>
-    
+
     <script>
         // add markers on the map to mark places
         function myMap() {
@@ -17,40 +17,43 @@
 
             let map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
 
+            //dummy route is from gatech campus center marker to klaus
             let gatechCampusCentermarker = new google.maps.Marker({
                 position: new google.maps.LatLng(33.77560886265289, -84.39638156260743),
                 map: map
             })
 
-            let klausBuilding = new google.maps.Marker( {
+            let klausBuilding = new google.maps.Marker({
                 position: new google.maps.LatLng(33.77740691779224, -84.39576696552349),
                 map: map
             })
 
-            let brownResidenceHall = new google.maps.Marker( {
-                position: new google.maps.LatLng(33.7716859491549, -84.3918628297319),
-                map: map
-            }) 
-
-            let dmSmithBuilding = new google.maps.Marker( {
-                position: new google.maps.LatLng(33.77377721145377, -84.39518568755625),
+            //different routes dummy is from howey to north ave
+            let northAveApartment = new google.maps.Marker({
+                position: new google.maps.LatLng(33.770034182224144, -84.39100170861106),
                 map: map
             })
-            
+
+            let howeyBuilding = new google.maps.Marker({
+                position: new google.maps.LatLng(33.77773952014771, -84.39915562425962),
+                map: map
+            })
+
         }
 
     </script>
-   
-   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCgGhTUKNl2FD3uDxSt1rpXcLh216Yy7EE&callback=myMap"></script>
-    
 
-   
-    <input id="denivele_circuit" />
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCgGhTUKNl2FD3uDxSt1rpXcLh216Yy7EE&callback=myMap"></script>
+
+
+
+    <input id="elevationOutput" />
 
     <div id="map_canvas"></div>
 
 
-    
+
     <script>
         // get the elevation
         let gmarkers = [];
@@ -78,7 +81,7 @@
             elevationService.getElevationForLocations(requestElevation, function (results, status) {
                 if (status == google.maps.ElevationStatus.OK) {
                     if (results[0]) {
-                        document.getElementById('denivele_circuit').value = parseFloat(results[0].elevation.toFixed(1)) + " metres";
+                        document.getElementById('elevationOutput').value = parseFloat(results[0].elevation.toFixed(1)) + " metres";
                     }
                 }
             });
@@ -87,8 +90,1001 @@
         // differentRoutesDummy is the data taken when origin: brown residence hall -> destination is dmsmith
         // route dummy is the data taken when origin: GATech campus center -> Destination: Klaus Computing Building
         google.maps.event.addDomListener(window, "load", initialize());
+
+        let differentRoutes = {
+            "geocoded_waypoints": [
+                {
+                    "geocoder_status": "OK",
+                    "place_id": "ChIJ2_sPqmQE9YgRJKAaNLzdYSM",
+                    "types": ["premise"]
+                },
+                {
+                    "geocoder_status": "OK",
+                    "place_id": "ChIJOSQ0sYsE9YgRbN5WUtnGUSY",
+                    "types": ["establishment", "point_of_interest"]
+                }
+            ],
+            "routes": [
+                {
+                    "bounds": {
+                        "northeast": {
+                            "lat": 33.7775958,
+                            "lng": -84.39073279999999
+                        },
+                        "southwest": {
+                            "lat": 33.7700284,
+                            "lng": -84.3992617
+                        }
+                    },
+                    "copyrights": "Map data ©2021",
+                    "legs": [
+                        {
+                            "distance": {
+                                "text": "0.9 mi",
+                                "value": 1506
+                            },
+                            "duration": {
+                                "text": "19 mins",
+                                "value": 1136
+                            },
+                            "end_address": "837 State St NW, Atlanta, GA 30313, USA",
+                            "end_location": {
+                                "lat": 33.7775958,
+                                "lng": -84.399107
+                            },
+                            "start_address": "120 North Avenue NW, Atlanta, GA 30313, USA",
+                            "start_location": {
+                                "lat": 33.7700284,
+                                "lng": -84.3907785
+                            },
+                            "steps": [
+                                {
+                                    "distance": {
+                                        "text": "459 ft",
+                                        "value": 140
+                                    },
+                                    "duration": {
+                                        "text": "2 mins",
+                                        "value": 116
+                                    },
+                                    "end_location": {
+                                        "lat": 33.7712432,
+                                        "lng": -84.39073279999999
+                                    },
+                                    "html_instructions": "Head \u003cb\u003enorth\u003c/b\u003e toward \u003cb\u003eNorth Avenue NW\u003c/b\u003e",
+                                    "polyline": {
+                                        "points": "uubmEjqabOgACgAAc@A}@A"
+                                    },
+                                    "start_location": {
+                                        "lat": 33.7700284,
+                                        "lng": -84.3907785
+                                    },
+                                    "travel_mode": "WALKING"
+                                },
+                                {
+                                    "distance": {
+                                        "text": "0.3 mi",
+                                        "value": 499
+                                    },
+                                    "duration": {
+                                        "text": "7 mins",
+                                        "value": 404
+                                    },
+                                    "end_location": {
+                                        "lat": 33.7713895,
+                                        "lng": -84.3961041
+                                    },
+                                    "html_instructions": "Turn \u003cb\u003eleft\u003c/b\u003e onto \u003cb\u003eNorth Avenue NW\u003c/b\u003e",
+                                    "maneuver": "turn-left",
+                                    "polyline": {
+                                        "points": "g}bmE`qabO?t@?d@?bB?bAQ??D?J?vA?r@?D?XEz@?\\?D?n@?R?b@?ZAtA?l@?Z?^A~@?T?j@?TAr@"
+                                    },
+                                    "start_location": {
+                                        "lat": 33.7712432,
+                                        "lng": -84.39073279999999
+                                    },
+                                    "travel_mode": "WALKING"
+                                },
+                                {
+                                    "distance": {
+                                        "text": "230 ft",
+                                        "value": 70
+                                    },
+                                    "duration": {
+                                        "text": "1 min",
+                                        "value": 47
+                                    },
+                                    "end_location": {
+                                        "lat": 33.7719986,
+                                        "lng": -84.39645969999999
+                                    },
+                                    "html_instructions": "Turn \u003cb\u003eright\u003c/b\u003e onto \u003cb\u003eTech Pkwy NW\u003c/b\u003e",
+                                    "maneuver": "turn-right",
+                                    "polyline": {
+                                        "points": "e~bmErrbbO}Av@MFMF"
+                                    },
+                                    "start_location": {
+                                        "lat": 33.7713895,
+                                        "lng": -84.3961041
+                                    },
+                                    "travel_mode": "WALKING"
+                                },
+                                {
+                                    "distance": {
+                                        "text": "171 ft",
+                                        "value": 52
+                                    },
+                                    "duration": {
+                                        "text": "1 min",
+                                        "value": 35
+                                    },
+                                    "end_location": {
+                                        "lat": 33.7723784,
+                                        "lng": -84.3965204
+                                    },
+                                    "html_instructions": "Slight \u003cb\u003eright\u003c/b\u003e toward \u003cb\u003eFerst Dr\u003c/b\u003e",
+                                    "maneuver": "turn-slight-right",
+                                    "polyline": {
+                                        "points": "_bcmEztbbOI?E@E@QBc@B"
+                                    },
+                                    "start_location": {
+                                        "lat": 33.7719986,
+                                        "lng": -84.39645969999999
+                                    },
+                                    "travel_mode": "WALKING"
+                                },
+                                {
+                                    "distance": {
+                                        "text": "361 ft",
+                                        "value": 110
+                                    },
+                                    "duration": {
+                                        "text": "1 min",
+                                        "value": 72
+                                    },
+                                    "end_location": {
+                                        "lat": 33.7729665,
+                                        "lng": -84.39746269999999
+                                    },
+                                    "html_instructions": "Turn \u003cb\u003eleft\u003c/b\u003e onto \u003cb\u003eFerst Dr\u003c/b\u003e",
+                                    "maneuver": "turn-left",
+                                    "polyline": {
+                                        "points": "kdcmEfubbOEVGNi@z@ORKNMVSZ"
+                                    },
+                                    "start_location": {
+                                        "lat": 33.7723784,
+                                        "lng": -84.3965204
+                                    },
+                                    "travel_mode": "WALKING"
+                                },
+                                {
+                                    "distance": {
+                                        "text": "144 ft",
+                                        "value": 44
+                                    },
+                                    "duration": {
+                                        "text": "1 min",
+                                        "value": 29
+                                    },
+                                    "end_location": {
+                                        "lat": 33.7732658,
+                                        "lng": -84.3975243
+                                    },
+                                    "html_instructions": "Turn \u003cb\u003eright\u003c/b\u003e",
+                                    "maneuver": "turn-right",
+                                    "polyline": {
+                                        "points": "ahcmEb{bbOMIGCGAE?I?IFAFAJ"
+                                    },
+                                    "start_location": {
+                                        "lat": 33.7729665,
+                                        "lng": -84.39746269999999
+                                    },
+                                    "travel_mode": "WALKING"
+                                },
+                                {
+                                    "distance": {
+                                        "text": "46 ft",
+                                        "value": 14
+                                    },
+                                    "duration": {
+                                        "text": "1 min",
+                                        "value": 11
+                                    },
+                                    "end_location": {
+                                        "lat": 33.7733897,
+                                        "lng": -84.3975262
+                                    },
+                                    "html_instructions": "Turn \u003cb\u003eright\u003c/b\u003e",
+                                    "maneuver": "turn-right",
+                                    "polyline": {
+                                        "points": "}icmEn{bbOW@"
+                                    },
+                                    "start_location": {
+                                        "lat": 33.7732658,
+                                        "lng": -84.3975243
+                                    },
+                                    "travel_mode": "WALKING"
+                                },
+                                {
+                                    "distance": {
+                                        "text": "23 ft",
+                                        "value": 7
+                                    },
+                                    "duration": {
+                                        "text": "1 min",
+                                        "value": 5
+                                    },
+                                    "end_location": {
+                                        "lat": 33.7733905,
+                                        "lng": -84.3974509
+                                    },
+                                    "html_instructions": "Turn \u003cb\u003eright\u003c/b\u003e",
+                                    "maneuver": "turn-right",
+                                    "polyline": {
+                                        "points": "ujcmEp{bbO?O"
+                                    },
+                                    "start_location": {
+                                        "lat": 33.7733897,
+                                        "lng": -84.3975262
+                                    },
+                                    "travel_mode": "WALKING"
+                                },
+                                {
+                                    "distance": {
+                                        "text": "220 ft",
+                                        "value": 67
+                                    },
+                                    "duration": {
+                                        "text": "1 min",
+                                        "value": 45
+                                    },
+                                    "end_location": {
+                                        "lat": 33.7738838,
+                                        "lng": -84.3977999
+                                    },
+                                    "html_instructions": "Turn \u003cb\u003eleft\u003c/b\u003e",
+                                    "maneuver": "turn-left",
+                                    "polyline": {
+                                        "points": "ujcmE`{bbO[?OJ_@VU`@"
+                                    },
+                                    "start_location": {
+                                        "lat": 33.7733905,
+                                        "lng": -84.3974509
+                                    },
+                                    "travel_mode": "WALKING"
+                                },
+                                {
+                                    "distance": {
+                                        "text": "52 ft",
+                                        "value": 16
+                                    },
+                                    "duration": {
+                                        "text": "1 min",
+                                        "value": 11
+                                    },
+                                    "end_location": {
+                                        "lat": 33.7740242,
+                                        "lng": -84.3978056
+                                    },
+                                    "html_instructions": "Turn \u003cb\u003eright\u003c/b\u003e",
+                                    "maneuver": "turn-right",
+                                    "polyline": {
+                                        "points": "wmcmEf}bbO[@"
+                                    },
+                                    "start_location": {
+                                        "lat": 33.7738838,
+                                        "lng": -84.3977999
+                                    },
+                                    "travel_mode": "WALKING"
+                                },
+                                {
+                                    "distance": {
+                                        "text": "26 ft",
+                                        "value": 8
+                                    },
+                                    "duration": {
+                                        "text": "1 min",
+                                        "value": 5
+                                    },
+                                    "end_location": {
+                                        "lat": 33.7740254,
+                                        "lng": -84.3978879
+                                    },
+                                    "html_instructions": "Turn \u003cb\u003eleft\u003c/b\u003e at \u003cb\u003eSkiles Walkway\u003c/b\u003e",
+                                    "maneuver": "turn-left",
+                                    "polyline": {
+                                        "points": "sncmEh}bbOAN"
+                                    },
+                                    "start_location": {
+                                        "lat": 33.7740242,
+                                        "lng": -84.3978056
+                                    },
+                                    "travel_mode": "WALKING"
+                                },
+                                {
+                                    "distance": {
+                                        "text": "200 ft",
+                                        "value": 61
+                                    },
+                                    "duration": {
+                                        "text": "1 min",
+                                        "value": 42
+                                    },
+                                    "end_location": {
+                                        "lat": 33.7743992,
+                                        "lng": -84.3982506
+                                    },
+                                    "html_instructions": "Turn \u003cb\u003eright\u003c/b\u003e",
+                                    "maneuver": "turn-right",
+                                    "polyline": {
+                                        "points": "uncmEx}bbOc@LADCNE?A?A?A@A?A?A@A@A?A@?@A??@A@?@A@?@A@?@?@?@?@?D"
+                                    },
+                                    "start_location": {
+                                        "lat": 33.7740254,
+                                        "lng": -84.3978879
+                                    },
+                                    "travel_mode": "WALKING"
+                                },
+                                {
+                                    "distance": {
+                                        "text": "0.1 mi",
+                                        "value": 160
+                                    },
+                                    "duration": {
+                                        "text": "2 mins",
+                                        "value": 127
+                                    },
+                                    "end_location": {
+                                        "lat": 33.7757638,
+                                        "lng": -84.39871599999999
+                                    },
+                                    "html_instructions": "Turn \u003cb\u003eright\u003c/b\u003e",
+                                    "maneuver": "turn-right",
+                                    "polyline": {
+                                        "points": "_qcmE``cbO[FiA`@m@RIBSJa@NG?C?C?M?]?"
+                                    },
+                                    "start_location": {
+                                        "lat": 33.7743992,
+                                        "lng": -84.3982506
+                                    },
+                                    "travel_mode": "WALKING"
+                                },
+                                {
+                                    "distance": {
+                                        "text": "49 ft",
+                                        "value": 15
+                                    },
+                                    "duration": {
+                                        "text": "1 min",
+                                        "value": 13
+                                    },
+                                    "end_location": {
+                                        "lat": 33.7757653,
+                                        "lng": -84.398878
+                                    },
+                                    "html_instructions": "Turn \u003cb\u003eleft\u003c/b\u003e",
+                                    "maneuver": "turn-left",
+                                    "polyline": {
+                                        "points": "oycmE~bcbOA^"
+                                    },
+                                    "start_location": {
+                                        "lat": 33.7757638,
+                                        "lng": -84.39871599999999
+                                    },
+                                    "travel_mode": "WALKING"
+                                },
+                                {
+                                    "distance": {
+                                        "text": "62 ft",
+                                        "value": 19
+                                    },
+                                    "duration": {
+                                        "text": "1 min",
+                                        "value": 16
+                                    },
+                                    "end_location": {
+                                        "lat": 33.7759372,
+                                        "lng": -84.39887499999999
+                                    },
+                                    "html_instructions": "Turn \u003cb\u003eright\u003c/b\u003e",
+                                    "maneuver": "turn-right",
+                                    "polyline": {
+                                        "points": "qycmE~ccbOW?IA"
+                                    },
+                                    "start_location": {
+                                        "lat": 33.7757653,
+                                        "lng": -84.398878
+                                    },
+                                    "travel_mode": "WALKING"
+                                },
+                                {
+                                    "distance": {
+                                        "text": "105 ft",
+                                        "value": 32
+                                    },
+                                    "duration": {
+                                        "text": "1 min",
+                                        "value": 25
+                                    },
+                                    "end_location": {
+                                        "lat": 33.7760572,
+                                        "lng": -84.3991705
+                                    },
+                                    "html_instructions": "Turn \u003cb\u003eleft\u003c/b\u003e",
+                                    "maneuver": "turn-left",
+                                    "polyline": {
+                                        "points": "szcmE|ccbO@P?@A@?BA@ABCDEDEFCF"
+                                    },
+                                    "start_location": {
+                                        "lat": 33.7759372,
+                                        "lng": -84.39887499999999
+                                    },
+                                    "travel_mode": "WALKING"
+                                },
+                                {
+                                    "distance": {
+                                        "text": "144 ft",
+                                        "value": 44
+                                    },
+                                    "duration": {
+                                        "text": "1 min",
+                                        "value": 35
+                                    },
+                                    "end_location": {
+                                        "lat": 33.7764501,
+                                        "lng": -84.39916149999999
+                                    },
+                                    "html_instructions": "Turn \u003cb\u003eright\u003c/b\u003e",
+                                    "maneuver": "turn-right",
+                                    "polyline": {
+                                        "points": "k{cmExecbOW?Y?[A"
+                                    },
+                                    "start_location": {
+                                        "lat": 33.7760572,
+                                        "lng": -84.3991705
+                                    },
+                                    "travel_mode": "WALKING"
+                                },
+                                {
+                                    "distance": {
+                                        "text": "72 ft",
+                                        "value": 22
+                                    },
+                                    "duration": {
+                                        "text": "1 min",
+                                        "value": 17
+                                    },
+                                    "end_location": {
+                                        "lat": 33.7766261,
+                                        "lng": -84.3992617
+                                    },
+                                    "html_instructions": "Slight \u003cb\u003eleft\u003c/b\u003e",
+                                    "maneuver": "turn-slight-left",
+                                    "polyline": {
+                                        "points": "y}cmEvecbOUJMF"
+                                    },
+                                    "start_location": {
+                                        "lat": 33.7764501,
+                                        "lng": -84.39916149999999
+                                    },
+                                    "travel_mode": "WALKING"
+                                },
+                                {
+                                    "distance": {
+                                        "text": "295 ft",
+                                        "value": 90
+                                    },
+                                    "duration": {
+                                        "text": "1 min",
+                                        "value": 57
+                                    },
+                                    "end_location": {
+                                        "lat": 33.777416,
+                                        "lng": -84.39911169999999
+                                    },
+                                    "html_instructions": "Turn \u003cb\u003eright\u003c/b\u003e",
+                                    "maneuver": "turn-right",
+                                    "polyline": {
+                                        "points": "}~cmEjfcbOCC_ASQCI?}@A"
+                                    },
+                                    "start_location": {
+                                        "lat": 33.7766261,
+                                        "lng": -84.3992617
+                                    },
+                                    "travel_mode": "WALKING"
+                                },
+                                {
+                                    "distance": {
+                                        "text": "118 ft",
+                                        "value": 36
+                                    },
+                                    "duration": {
+                                        "text": "1 min",
+                                        "value": 24
+                                    },
+                                    "end_location": {
+                                        "lat": 33.7775958,
+                                        "lng": -84.399107
+                                    },
+                                    "html_instructions": "Continue straight\u003cdiv style=\"font-size:0.9em\"\u003eDestination will be on the left\u003c/div\u003e",
+                                    "maneuver": "straight",
+                                    "polyline": {
+                                        "points": "{cdmElecbOc@?"
+                                    },
+                                    "start_location": {
+                                        "lat": 33.777416,
+                                        "lng": -84.39911169999999
+                                    },
+                                    "travel_mode": "WALKING"
+                                }
+                            ],
+                            "traffic_speed_entry": [],
+                            "via_waypoint": []
+                        }
+                    ],
+                    "overview_polyline": {
+                        "points": "uubmEjqabOqFI?bGQ??D?bB?x@EtA?fBAbEApC?`AAr@}Av@[NO@WDc@BEVq@jA[b@a@r@UMMAI?IFCRW@?O[?OJ_@VU`@[@ANc@LADCNE?A?E@IDEJANeBh@w@Vu@ZK?Q?]?A^a@A@RCFQVCFW?u@Ac@RcAW[CaBA"
+                    },
+                    "summary": "North Avenue NW",
+                    "warnings": [
+                        "Walking directions are in beta. Use caution – This route may be missing sidewalks or pedestrian paths."
+                    ],
+                    "waypoint_order": []
+                },
+                {
+                    "bounds": {
+                        "northeast": {
+                            "lat": 33.7782609,
+                            "lng": -84.39073279999999
+                        },
+                        "southwest": {
+                            "lat": 33.7700284,
+                            "lng": -84.399101
+                        }
+                    },
+                    "copyrights": "Map data ©2021",
+                    "legs": [
+                        {
+                            "distance": {
+                                "text": "1.0 mi",
+                                "value": 1612
+                            },
+                            "duration": {
+                                "text": "20 mins",
+                                "value": 1205
+                            },
+                            "end_address": "837 State St NW, Atlanta, GA 30313, USA",
+                            "end_location": {
+                                "lat": 33.7778297,
+                                "lng": -84.399101
+                            },
+                            "start_address": "120 North Avenue NW, Atlanta, GA 30313, USA",
+                            "start_location": {
+                                "lat": 33.7700284,
+                                "lng": -84.3907785
+                            },
+                            "steps": [
+                                {
+                                    "distance": {
+                                        "text": "459 ft",
+                                        "value": 140
+                                    },
+                                    "duration": {
+                                        "text": "2 mins",
+                                        "value": 116
+                                    },
+                                    "end_location": {
+                                        "lat": 33.7712432,
+                                        "lng": -84.39073279999999
+                                    },
+                                    "html_instructions": "Head \u003cb\u003enorth\u003c/b\u003e toward \u003cb\u003eNorth Avenue NW\u003c/b\u003e",
+                                    "polyline": {
+                                        "points": "uubmEjqabOgACgAAc@A}@A"
+                                    },
+                                    "start_location": {
+                                        "lat": 33.7700284,
+                                        "lng": -84.3907785
+                                    },
+                                    "travel_mode": "WALKING"
+                                },
+                                {
+                                    "distance": {
+                                        "text": "400 ft",
+                                        "value": 122
+                                    },
+                                    "duration": {
+                                        "text": "1 min",
+                                        "value": 77
+                                    },
+                                    "end_location": {
+                                        "lat": 33.771333,
+                                        "lng": -84.39204409999999
+                                    },
+                                    "html_instructions": "Turn \u003cb\u003eleft\u003c/b\u003e onto \u003cb\u003eNorth Avenue NW\u003c/b\u003e",
+                                    "maneuver": "turn-left",
+                                    "polyline": {
+                                        "points": "g}bmE`qabO?t@?d@?bB?bAQ??@"
+                                    },
+                                    "start_location": {
+                                        "lat": 33.7712432,
+                                        "lng": -84.39073279999999
+                                    },
+                                    "travel_mode": "WALKING"
+                                },
+                                {
+                                    "distance": {
+                                        "text": "0.3 mi",
+                                        "value": 428
+                                    },
+                                    "duration": {
+                                        "text": "5 mins",
+                                        "value": 312
+                                    },
+                                    "end_location": {
+                                        "lat": 33.7751747,
+                                        "lng": -84.3920103
+                                    },
+                                    "html_instructions": "Turn \u003cb\u003eright\u003c/b\u003e onto \u003cb\u003eTechwood Dr NW\u003c/b\u003e",
+                                    "maneuver": "turn-right",
+                                    "polyline": {
+                                        "points": "y}bmEfyabOKAMAO?iACgA?c@?a@A}@?M?s@?}BAkA?I?I?C?I?w@AW?Y?Y?MF"
+                                    },
+                                    "start_location": {
+                                        "lat": 33.771333,
+                                        "lng": -84.39204409999999
+                                    },
+                                    "travel_mode": "WALKING"
+                                },
+                                {
+                                    "distance": {
+                                        "text": "0.1 mi",
+                                        "value": 185
+                                    },
+                                    "duration": {
+                                        "text": "2 mins",
+                                        "value": 126
+                                    },
+                                    "end_location": {
+                                        "lat": 33.7759299,
+                                        "lng": -84.393649
+                                    },
+                                    "html_instructions": "Turn \u003cb\u003eleft\u003c/b\u003e onto \u003cb\u003e4th St NW\u003c/b\u003e",
+                                    "maneuver": "turn-left",
+                                    "polyline": {
+                                        "points": "yucmE`yabOAD?BAB?@?BABEHGBKVOPGHIJEFGHEJILKTCJGNELAFCJI^E^C`@"
+                                    },
+                                    "start_location": {
+                                        "lat": 33.7751747,
+                                        "lng": -84.3920103
+                                    },
+                                    "travel_mode": "WALKING"
+                                },
+                                {
+                                    "distance": {
+                                        "text": "358 ft",
+                                        "value": 109
+                                    },
+                                    "duration": {
+                                        "text": "1 min",
+                                        "value": 85
+                                    },
+                                    "end_location": {
+                                        "lat": 33.77691,
+                                        "lng": -84.3936341
+                                    },
+                                    "html_instructions": "Turn \u003cb\u003eright\u003c/b\u003e onto \u003cb\u003eFowler St NW\u003c/b\u003e",
+                                    "maneuver": "turn-right",
+                                    "polyline": {
+                                        "points": "qzcmEhcbbOmA?U?UAiAA"
+                                    },
+                                    "start_location": {
+                                        "lat": 33.7759299,
+                                        "lng": -84.393649
+                                    },
+                                    "travel_mode": "WALKING"
+                                },
+                                {
+                                    "distance": {
+                                        "text": "0.3 mi",
+                                        "value": 522
+                                    },
+                                    "duration": {
+                                        "text": "7 mins",
+                                        "value": 399
+                                    },
+                                    "end_location": {
+                                        "lat": 33.7782609,
+                                        "lng": -84.3985581
+                                    },
+                                    "html_instructions": "Turn \u003cb\u003eleft\u003c/b\u003e onto \u003cb\u003eFerst Dr\u003c/b\u003e",
+                                    "maneuver": "turn-left",
+                                    "polyline": {
+                                        "points": "u`dmEdcbbOAn@?hAAzAAjAAHCNCFEHCDCBIHIHiAn@UNOHEBKFQRIHEHCDGLKTK\\Gb@AFALAD?HAR?v@A|A?Z?XAtA?f@"
+                                    },
+                                    "start_location": {
+                                        "lat": 33.77691,
+                                        "lng": -84.3936341
+                                    },
+                                    "travel_mode": "WALKING"
+                                },
+                                {
+                                    "distance": {
+                                        "text": "72 ft",
+                                        "value": 22
+                                    },
+                                    "duration": {
+                                        "text": "1 min",
+                                        "value": 17
+                                    },
+                                    "end_location": {
+                                        "lat": 33.7780651,
+                                        "lng": -84.3985874
+                                    },
+                                    "html_instructions": "Turn \u003cb\u003eleft\u003c/b\u003e",
+                                    "maneuver": "turn-left",
+                                    "polyline": {
+                                        "points": "cidmE~acbOd@D"
+                                    },
+                                    "start_location": {
+                                        "lat": 33.7782609,
+                                        "lng": -84.3985581
+                                    },
+                                    "travel_mode": "WALKING"
+                                },
+                                {
+                                    "distance": {
+                                        "text": "154 ft",
+                                        "value": 47
+                                    },
+                                    "duration": {
+                                        "text": "1 min",
+                                        "value": 36
+                                    },
+                                    "end_location": {
+                                        "lat": 33.7780747,
+                                        "lng": -84.3990974
+                                    },
+                                    "html_instructions": "Turn \u003cb\u003eright\u003c/b\u003e",
+                                    "maneuver": "turn-right",
+                                    "polyline": {
+                                        "points": "}gdmEdbcbO?J?xA"
+                                    },
+                                    "start_location": {
+                                        "lat": 33.7780651,
+                                        "lng": -84.3985874
+                                    },
+                                    "travel_mode": "WALKING"
+                                },
+                                {
+                                    "distance": {
+                                        "text": "121 ft",
+                                        "value": 37
+                                    },
+                                    "duration": {
+                                        "text": "1 min",
+                                        "value": 37
+                                    },
+                                    "end_location": {
+                                        "lat": 33.7778297,
+                                        "lng": -84.399101
+                                    },
+                                    "html_instructions": "Turn \u003cb\u003eleft\u003c/b\u003e\u003cdiv style=\"font-size:0.9em\"\u003eDestination will be on the right\u003c/div\u003e",
+                                    "maneuver": "turn-left",
+                                    "polyline": {
+                                        "points": "}gdmEjecbO^?N?"
+                                    },
+                                    "start_location": {
+                                        "lat": 33.7780747,
+                                        "lng": -84.3990974
+                                    },
+                                    "travel_mode": "WALKING"
+                                }
+                            ],
+                            "traffic_speed_entry": [],
+                            "via_waypoint": []
+                        }
+                    ],
+                    "overview_polyline": {
+                        "points": "uubmEjqabOqFI?bGQ??@YCeEC_KC}AAs@?MFADAF?D[h@g@n@c@x@Sp@Mj@I`AcECE`HOj@[\\uBlA]ZORc@fAM~@EfJd@D?J?xA^?N?"
+                    },
+                    "summary": "Techwood Dr NW and Ferst Dr",
+                    "warnings": [
+                        "Walking directions are in beta. Use caution – This route may be missing sidewalks or pedestrian paths."
+                    ],
+                    "waypoint_order": []
+                }
+            ],
+            "status": "OK"
+        }
+
+        let routeDummy = {
+            "geocoded_waypoints": [
+                {
+                    "geocoder_status": "OK",
+                    "place_id": "ChIJlYGjAGIE9YgRpGSn-NVBM2Y",
+                    "types": [
+                        "street_address"
+                    ]
+                },
+                {
+                    "geocoder_status": "OK",
+                    "place_id": "ChIJ0fGzomEE9YgRdiv3jAa9vLw",
+                    "types": [
+                        "street_address"
+                    ]
+                }
+            ],
+            "routes": [
+                {
+                    "bounds": {
+                        "northeast": {
+                            "lat": 33.77715999999999,
+                            "lng": -84.3951287
+                        },
+                        "southwest": {
+                            "lat": 33.7757483,
+                            "lng": -84.3963825
+                        }
+                    },
+                    "copyrights": "Map data ©2021 Google",
+                    "legs": [
+                        {
+                            "distance": {
+                                "text": "0.2 mi",
+                                "value": 310
+                            },
+                            "duration": {
+                                "text": "4 mins",
+                                "value": 228
+                            },
+                            "end_address": "255 Ferst Dr, Atlanta, GA 30313, USA",
+                            "end_location": {
+                                "lat": 33.77715999999999,
+                                "lng": -84.39544699999999
+                            },
+                            "start_address": "261 4th St NW, Atlanta, GA 30318, USA",
+                            "start_location": {
+                                "lat": 33.7757483,
+                                "lng": -84.3963825
+                            },
+                            "steps": [
+                                {
+                                    "distance": {
+                                        "text": "187 ft",
+                                        "value": 57
+                                    },
+                                    "duration": {
+                                        "text": "1 min",
+                                        "value": 44
+                                    },
+                                    "end_location": {
+                                        "lat": 33.77575120000001,
+                                        "lng": -84.3957606
+                                    },
+                                    "html_instructions": "Head \u003cb\u003eeast\u003c/b\u003e",
+                                    "polyline": {
+                                        "points": "mycmEjtbbO?{B"
+                                    },
+                                    "start_location": {
+                                        "lat": 33.7757483,
+                                        "lng": -84.3963825
+                                    },
+                                    "travel_mode": "WALKING"
+                                },
+                                {
+                                    "distance": {
+                                        "text": "456 ft",
+                                        "value": 139
+                                    },
+                                    "duration": {
+                                        "text": "2 mins",
+                                        "value": 93
+                                    },
+                                    "end_location": {
+                                        "lat": 33.77696520000001,
+                                        "lng": -84.3955239
+                                    },
+                                    "html_instructions": "Turn \u003cb\u003eleft\u003c/b\u003e toward \u003cb\u003eFerst Dr\u003c/b\u003e",
+                                    "maneuver": "turn-left",
+                                    "polyline": {
+                                        "points": "mycmEnpbbOUA_@Au@Aa@CCCIGKGOGCAEAGAEAE?IAS?"
+                                    },
+                                    "start_location": {
+                                        "lat": 33.77575120000001,
+                                        "lng": -84.3957606
+                                    },
+                                    "travel_mode": "WALKING"
+                                },
+                                {
+                                    "distance": {
+                                        "text": "121 ft",
+                                        "value": 37
+                                    },
+                                    "duration": {
+                                        "text": "1 min",
+                                        "value": 29
+                                    },
+                                    "end_location": {
+                                        "lat": 33.7769487,
+                                        "lng": -84.3951287
+                                    },
+                                    "html_instructions": "Turn \u003cb\u003eright\u003c/b\u003e toward \u003cb\u003eFerst Dr\u003c/b\u003e",
+                                    "maneuver": "turn-right",
+                                    "polyline": {
+                                        "points": "aadmE~nbbO@I@i@?Y"
+                                    },
+                                    "start_location": {
+                                        "lat": 33.77696520000001,
+                                        "lng": -84.3955239
+                                    },
+                                    "travel_mode": "WALKING"
+                                },
+                                {
+                                    "distance": {
+                                        "text": "253 ft",
+                                        "value": 77
+                                    },
+                                    "duration": {
+                                        "text": "1 min",
+                                        "value": 62
+                                    },
+                                    "end_location": {
+                                        "lat": 33.77715999999999,
+                                        "lng": -84.39544699999999
+                                    },
+                                    "html_instructions": "Sharp \u003cb\u003eleft\u003c/b\u003e onto \u003cb\u003eFerst Dr\u003c/b\u003e\u003cdiv style=\"font-size:0.9em\"\u003eDestination will be on the left\u003c/div\u003e",
+                                    "maneuver": "turn-sharp-left",
+                                    "polyline": {
+                                        "points": "}`dmEplbbOCNCFEHCDCBIHIH"
+                                    },
+                                    "start_location": {
+                                        "lat": 33.7769487,
+                                        "lng": -84.3951287
+                                    },
+                                    "travel_mode": "WALKING"
+                                }
+                            ],
+                            "traffic_speed_entry": [],
+                            "via_waypoint": []
+                        }
+                    ],
+                    "overview_polyline": {
+                        "points": "mycmEjtbbO?{BUAuACe@GUOa@MUCS?@I@cAQf@WV"
+                    },
+                    "summary": "Ferst Dr",
+                    "warnings": [
+                        "Walking directions are in beta. Use caution – This route may be missing sidewalks or pedestrian paths."
+                    ],
+                    "waypoint_order": []
+                }
+            ],
+            "status": "OK"
+        }
+
+        let total = []
+        let totalCounter = 0
+        for (let i = 0; i < differentRoutes.routes.length; i++) {
+            for (let j = 0; j < differentRoutes.routes[i].legs.length; j++) {
+                total[totalCounter] = 0.0;
+                for (let k = 0; k < differentRoutes.routes[i].legs[j].steps.length; k++) {
+                    let str = differentRoutes.routes[i].legs[j].steps[k].distance.text
+                    let substr = str.substr(0, str.lastIndexOf(" "))
+                    let unit = str.substr(str.lastIndexOf(" ") + 1, str.length - 1)
+                    
+                    if (unit === "mi") {
+                        console.log(parseFloat(substr) * 5280)
+                        total[totalCounter] += (parseFloat(substr) * 5280)
+                    } else { //Feet
+                        console.log(parseFloat(substr))
+                        total[totalCounter] += parseFloat(substr)
+                    }
+                }
+                totalCounter++;
+            }
+        }
+        console.log(total)
     </script>
-    
+
 
 </body>
 

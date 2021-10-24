@@ -87,6 +87,7 @@
                 'locations': [gmarkers[1].getPosition()]
             };
 
+
             let elevation1 = 1
             elevationService.getElevationForLocations(requestElevation0, function (results, status) {
                 if (status == google.maps.ElevationStatus.OK) {
@@ -97,6 +98,7 @@
             });
             elevation1 = document.getElementById('denivele_circuit').value;
             
+
 
             let elevation2 = 2
             elevationService.getElevationForLocations(requestElevation1, function (results, status) {
@@ -109,7 +111,9 @@
             elevation2 = document.getElementById('denivele_circuit').value;
             //console.log(elevation2)
 
+
             //document.getElementById('denivele_circuit').value = elevation1;
+
             document.getElementById('denivele_circuit').value = elevation1 - elevation2 + " metres";
 
         }
