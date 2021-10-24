@@ -87,14 +87,15 @@
                 'locations': [gmarkers[1].getPosition()]
             };
 
-            let elevation1 = 1
-            elevationService.getElevationForLocations(requestElevation0, function (results, status) {
-                if (status == google.maps.ElevationStatus.OK) {
-                    if (results[0]) {
-                        elevation1 = parseFloat(results[0].elevation.toFixed(1));
-                    }
-                }
-            });
+            let elevation1 = {
+                elevationData: 0.0
+            }
+
+            elevationService.getElevationForLocations(requestElevation0, function (elevationResult, status) {
+                elevation1.evelationData = elevationResult[0].elevation
+            }).then(err => {
+                console.log(err)
+            })
 
             let elevation2 = 2
             elevationService.getElevationForLocations(requestElevation1, function (results, status) {
@@ -105,7 +106,7 @@
                 }
             });
 
-            document.getElementById('denivele_circuit').value = elevation1;
+            document.getElementById('denivele_circuit').value = elevation1.elevationData;
             document.getElementById('denivele_circuit').value = elevation1 - elevation2 + " metres";
 
         }
