@@ -91,27 +91,33 @@
             elevationService.getElevationForLocations(requestElevation0, function (results, status) {
                 if (status == google.maps.ElevationStatus.OK) {
                     if (results[0]) {
-                        elevation1 = parseFloat(results[0].elevation.toFixed(1));
+                        document.getElementById('denivele_circuit').value = parseFloat(results[0].elevation.toFixed(1));
                     }
                 }
             });
+            elevation1 = document.getElementById('denivele_circuit').value;
+            
 
             let elevation2 = 2
             elevationService.getElevationForLocations(requestElevation1, function (results, status) {
                 if (status == google.maps.ElevationStatus.OK) {
                     if (results[1]) {
-                        elevation2 = parseFloat(results[1].elevation.toFixed(1));
+                        document.getElementById('denivele_circuit').value = parseFloat(results[0].elevation.toFixed(1));
                     }
                 }
             });
+            elevation2 = document.getElementById('denivele_circuit').value;
+            //console.log(elevation2)
 
-            document.getElementById('denivele_circuit').value = elevation1;
+            //document.getElementById('denivele_circuit').value = elevation1;
             document.getElementById('denivele_circuit').value = elevation1 - elevation2 + " metres";
 
         }
         // differentRoutesDummy is the data taken when origin: brown residence hall -> destination is dmsmith
         // route dummy is the data taken when origin: GATech campus center -> Destination: Klaus Computing Building
         google.maps.event.addDomListener(window, "load", initialize());
+
+        
     </script>
     
 
