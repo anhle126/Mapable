@@ -1083,6 +1083,31 @@
             }
         }
         console.log(total)
+
+        let index = 0;
+        let leastEffort = 0;
+        let elevations = [10, 20]
+        for (let i = 0; i < differentRoutes.routes.length; i++) {
+            let effort = 0;
+            let str = differentRoutes.routes.legs.distance
+            let unit = str.substr(str.lastIndexOf(" ") + 1, str.length - 1)
+            let substr = str.substr(0, str.lastIndexOf(" "))
+
+            if (unit === "mi") {
+                    console.log(parseFloat(substr) * 5280)
+                    effort = (parseFloat(substr) * 5280) / elevations[i]
+                } else { //Feet
+                    console.log(parseFloat(substr))
+                    effort = parseFloat(substr) / elevations[i]
+                }
+
+            if (effort < leastEffort) {
+                leastEffort = effort
+                index = i
+            }
+            
+        }
+
     </script>
 
 
